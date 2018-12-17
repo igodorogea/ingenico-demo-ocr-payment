@@ -1,0 +1,3 @@
+<button (click)="openIframe()" class="btn btn-secondary btn-block">Scan card</button>
+
+<iframe [src]="iframeUrl" (load)="iframeLoaded()" frameborder="0" [hidden]="showIframe"></iframe>
