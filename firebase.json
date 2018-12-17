@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/ingenico-demo-ocr-payment",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "10"
+
+branches:
+  only:
+    - master
+
+cache: npm
+
+before_install:
+  - npm install -g firebase-tools
+
+install:
+  - npm ci
+
+before_script:
+  - npm run build -- --prod --vendor-chunk=true
+
+script:
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive --project $FIREBASE_PROJECT_ID
+
+notifications:
+  email:
+    on_success: always
