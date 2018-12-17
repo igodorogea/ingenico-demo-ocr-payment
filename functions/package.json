@@ -11,8 +11,10 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "express": "^4.16.4",
     "firebase-admin": "~6.0.0",
-    "firebase-functions": "^2.1.0"
+    "firebase-functions": "^2.1.0",
+    "http-proxy-middleware": "^0.19.1"
   },
   "devDependencies": {
     "tslint": "~5.8.0",

@@ -13,6 +13,7 @@ before_install:
 
 install:
   - npm ci
+  - cd functions && npm ci && cd ..
 
 before_script:
   - npm run build -- --prod --vendor-chunk=true
