@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { appConfig } from '../app.config';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+interface OcrUrl {
+  addCreditCardUrl: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectPaymentMethodService {
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Accept':  'application/json',
-      'Content-Type':  'application/json',
-      'Authorization': appConfig.authToken,
-      'App-Code': appConfig.appCode
-    })
-  };
   constructor(private http: HttpClient) { }
 
-  getOcrIframeUrl() {
-    return this.http.post('/api/muume/creditCard/ocr', null, this.httpOptions);
+  getOcrIframeUrl(): Observable<string> {
+    return this.http.post<OcrUrl>('/proxy/api/muume/creditCard/ocr', null)
+      .pipe(map(resp => resp.addCreditCardUrl.replace('https://ops-proxy-demo.winify.com', '/proxy/iframe')));
   }
 }

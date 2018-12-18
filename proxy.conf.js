@@ -1,9 +1,6 @@
 module.exports = {
-  "/api": {
-    "target": "https://demo.muume.com",
-    "secure": false,
-    "pathRewrite": {
-      "^/api": ""
-    }
+  "/proxy": {
+    "target": "http://localhost:5000/ingenico-demo-ocr-payment/us-central1/proxy",
+    "secure": false
   }
 };
