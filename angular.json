@@ -62,7 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ingenico-demo-ocr-payment:build",
-            "proxyConfig": "proxy.conf.js"
+            "proxyConfig": "proxy.conf.js",
+            "sslKey": "src/environments/key.pem",
+            "sslCert": "src/environments/cert.pem",
+            "ssl": true
           },
           "configurations": {
             "production": {
