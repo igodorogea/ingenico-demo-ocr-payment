@@ -9,7 +9,11 @@
     "rewrites": [
       {
         "source": "/proxy/**",
-        "function": "proxy"
+        "function": "proxyFunc"
+      },
+      {
+        "source": "/muume/**",
+        "function": "proxyFunc"
       },
       {
         "source": "**",

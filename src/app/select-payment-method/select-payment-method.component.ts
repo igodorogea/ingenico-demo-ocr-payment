@@ -12,19 +12,19 @@ export class SelectPaymentMethodComponent {
   iframeUrl;
 
   constructor(private sanitizer: DomSanitizer, private spmService: SelectPaymentMethodService) {
-    this.spmService.getOcrIframeUrl().subscribe(url => {
-      this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    });
+    // this.spmService.getOcrIframeUrl().subscribe(url => {
+    //   this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    // });
   }
 
   openIframe() {
-    this.showIframe = true;
     this.spmService.getOcrIframeUrl().subscribe(url => {
       this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      this.showIframe = true;
     });
   }
 
   iframeLoaded() {
-    // alert('iframe loaded');
+    alert('iframe loaded');
   }
 }

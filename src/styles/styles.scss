@@ -4,9 +4,7 @@ $card-border-radius: 0;
 $primary: #2861a2;
 $btn-border-radius: 0;
 
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+@import "utils";
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
@@ -45,5 +43,5 @@ html, body {
 
 body {
   margin: 0;
-  background-color: $gray-200;
+  background-color: $gray-100;
 }
