@@ -1,22 +1,33 @@
-<h2 class="h5">Your basket</h2>
+<h4 class="page-title">Your basket</h4>
 
 <div class="card basket-product-card">
   <div class="card-body d-flex flex-row align-items-center">
     <div class="product-image">
       <img src="/assets/images/product.png" alt="">
     </div>
-    <div class="d-flex flex-grow-1 flex-column">
-      <div class="product-name">Wilson Tennis Clothing</div>
-      <div class="product-size">S</div>
-      <div class="product-price"><span class="sub">EUR</span>15.00</div>
+    <div class="product-desc d-flex flex-grow-1 flex-column">
+      <div class="product-name text-primary">Wilson Tennis Clothing</div>
+      <div class="product-size d-flex align-items-center">S</div>
+      <div class="product-price">
+        <small>EUR</small>
+        <span class="text-primary">15.00</span>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="card basket-checkout-card">
   <div class="card-body">
-    <div class="basket-checkout-title">Subtotal</div>
-    <div class="basket-total">EUR 15.00 for 1 piece</div>
+    <div class="top-group d-flex justify-content-between align-items-end">
+      <h5 class="basket-checkout-title">Subtotal</h5>
+      <div class="basket-total">
+        <span class="product-price">
+          <small>EUR</small>
+          <span class="text-primary">15.00</span>
+        </span>
+        for <span class="text-primary">1 piece</span>
+      </div>
+    </div>
     <a routerLink="/select-payment-method" class="btn btn-primary btn-block">Checkout</a>
   </div>
 </div>

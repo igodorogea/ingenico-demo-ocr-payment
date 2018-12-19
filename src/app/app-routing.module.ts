@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { BasketComponent } from './basket/basket.component';
 import { SelectPaymentMethodComponent } from './select-payment-method/select-payment-method.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SuccessComponent } from './basket/success/success.component';
+import { CardSaveSuccessComponent } from './select-payment-method/card-save-success/card-save-success.component';
 
 const routes: Routes = [
   {path: 'basket', component: BasketComponent},
+  {path: 'basket/success', component: SuccessComponent},
   {path: 'select-payment-method', component: SelectPaymentMethodComponent},
+  {path: 'select-payment-method/card-save-success', component: CardSaveSuccessComponent},
   {path: '', redirectTo: '/basket', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];

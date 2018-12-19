@@ -1,0 +1,7 @@
+<div class="iframe-wrapper" *ngIf="showIframe">
+  <iframe [src]="iframeUrl" (load)="iframeLoaded(iframe)" #iframe frameborder="0"></iframe>
+</div>
+
+<app-spinner *ngIf="!showIframe">
+  <p>Please wait...</p>
+</app-spinner>

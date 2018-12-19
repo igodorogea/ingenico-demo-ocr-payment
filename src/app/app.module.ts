@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { BasketComponent } from './basket/basket.component';
 import { SelectPaymentMethodComponent } from './select-payment-method/select-payment-method.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SuccessComponent } from './basket/success/success.component';
+import { CardSaveSuccessComponent } from './select-payment-method/card-save-success/card-save-success.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasketComponent,
     SelectPaymentMethodComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SuccessComponent,
+    CardSaveSuccessComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

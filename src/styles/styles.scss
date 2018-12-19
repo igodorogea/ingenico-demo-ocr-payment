@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+$body-color: #000;
 $headings-font-weight: 700;
 $card-border-radius: 0;
-$primary: #2861a2;
+$primary: #2869ac;
 $btn-border-radius: 0;
+$gray-200: #ebebeb;
+$h4-font-size: 1.125rem;
+$h5-font-size: 1rem;
 
 @import "utils";
 @import "~bootstrap/scss/root";
@@ -37,11 +41,4 @@ $btn-border-radius: 0;
 @import "~bootstrap/scss/utilities";
 //@import "~bootstrap/scss/print";
 
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  background-color: $gray-100;
-}
+@import "commom";

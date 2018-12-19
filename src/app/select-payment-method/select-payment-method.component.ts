@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { SelectPaymentMethodService } from './select-payment-method.service';
 
 @Component({
@@ -8,23 +7,12 @@ import { SelectPaymentMethodService } from './select-payment-method.service';
   styleUrls: ['./select-payment-method.component.scss']
 })
 export class SelectPaymentMethodComponent {
-  showIframe = false;
-  iframeUrl;
-
-  constructor(private sanitizer: DomSanitizer, private spmService: SelectPaymentMethodService) {
-    // this.spmService.getOcrIframeUrl().subscribe(url => {
-    //   this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    // });
+  showSpinner = false;
+  constructor(private spmService: SelectPaymentMethodService) {
   }
 
-  openIframe() {
-    this.spmService.getOcrIframeUrl().subscribe(url => {
-      this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      this.showIframe = true;
-    });
-  }
-
-  iframeLoaded() {
-    alert('iframe loaded');
+  redirectToOcrServicePage() {
+    this.showSpinner = true;
+    this.spmService.getOcrServiceUrl().subscribe(url => window.location.href = url);
   }
 }

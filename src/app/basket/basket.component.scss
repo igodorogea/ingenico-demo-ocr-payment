@@ -1,16 +1,53 @@
-.h5 {
-  margin: 1rem;
-  text-transform: uppercase;
-}
-
-h6 {
-  text-transform: uppercase;
-}
+@import "~src/styles/utils";
 
 .card {
-  margin-bottom: .5rem;
+  border: none;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 1px 0 rgba(0, 0, 0, .12)
 }
 
 .card-body {
-  padding: .5rem;
+  padding: 5px;
+}
+
+.basket-product-card {
+  .product-image {
+    padding: 10px 15px 10px 10px;
+  }
+
+  .product-desc {
+    line-height: 20px;
+  }
+
+  .product-size {
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      background-color: $green;
+      margin-right: 5px;
+    }
+  }
+}
+
+.product-price {
+  small {
+    font-size: 11px;
+  }
+  span {
+    margin-left: 3px;
+  }
+}
+
+.basket-checkout-card {
+  .top-group {
+    padding: 10px 10px 25px;
+  }
+
+  .basket-checkout-title {
+    text-transform: uppercase;
+    margin: 0;
+  }
 }
