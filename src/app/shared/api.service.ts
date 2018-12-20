@@ -71,7 +71,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAddCreditCardOcrUrl(): Observable<string> {
-    return this.http.post<OcrUrl>('/muume/creditCard/ocr', null)
+    return this.http.post<OcrUrl>('/muume/creditCard/ocr?isOcrPayment=1', null)
       .pipe(map(({addCreditCardUrl}) => addCreditCardUrl));
   }
 

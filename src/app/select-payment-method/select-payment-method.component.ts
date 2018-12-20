@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SelectPaymentMethodService } from './select-payment-method.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-payment-method',
@@ -7,12 +7,10 @@ import { SelectPaymentMethodService } from './select-payment-method.service';
   styleUrls: ['./select-payment-method.component.scss']
 })
 export class SelectPaymentMethodComponent {
-  showSpinner = false;
-  constructor(private spmService: SelectPaymentMethodService) {
+  constructor(private router: Router) {
   }
 
   redirectToOcrServicePage() {
-    this.showSpinner = true;
-    this.spmService.getOcrServiceUrl().subscribe(url => window.location.href = url);
+    this.router.navigate(['/select-payment-method/ocr-iframe']);
   }
 }

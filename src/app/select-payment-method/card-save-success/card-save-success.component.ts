@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./card-save-success.component.scss']
 })
 export class CardSaveSuccessComponent implements OnInit {
-  showIframe = false;
   iframeUrl;
 
   constructor(private sanitizer: DomSanitizer, private cscService: CardSaveSuccessService, private router: Router) { }
@@ -17,18 +16,12 @@ export class CardSaveSuccessComponent implements OnInit {
   ngOnInit() {
     this.cscService.getInitPaymentUrl().subscribe(url => {
       this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      this.showIframe = true;
     });
   }
 
-  iframeLoaded(iframe: HTMLIFrameElement) {
-    console.log('iframeLoaded', iframe);
-    try {
-      if (iframe.contentWindow.location.href.indexOf('/ingenico/success') !== -1) {
+  iframeLoaded(url) {
+      if (url.indexOf('/ingenico/success') !== -1) {
         this.router.navigate(['/basket/success']);
       }
-    } catch (e) {
-      console.log(e);
-    }
   }
 }
