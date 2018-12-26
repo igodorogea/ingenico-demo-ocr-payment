@@ -63,8 +63,8 @@
           "options": {
             "browserTarget": "ingenico-demo-ocr-payment:build",
             "proxyConfig": "proxy.conf.js",
-            "sslKey": "src/environments/key.pem",
-            "sslCert": "src/environments/cert.pem",
+            "sslKey": "src/config/ssl-key.pem",
+            "sslCert": "src/config/ssl-cert.pem",
             "ssl": true
           },
           "configurations": {
