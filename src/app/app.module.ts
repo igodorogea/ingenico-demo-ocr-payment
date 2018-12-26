@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { BasketComponent } from './basket/basket.component';
 import { SelectPaymentMethodComponent } from './select-payment-method/select-payment-method.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SuccessComponent } from './basket/success/success.component';
+import { BasketSuccessComponent } from './basket/success/basket-success.component';
 import { CardSaveSuccessComponent } from './select-payment-method/card-save-success/card-save-success.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { MuumeHttpInterceptor } from './shared/muume-http.interceptor';
 import { OcrIframeComponent } from './select-payment-method/ocr-iframe/ocr-iframe.component';
 import { IframeComponent } from './shared/iframe/iframe.component';
+import { CardSaveErrorComponent } from './select-payment-method/card-save-error/card-save-error.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,12 @@ import { IframeComponent } from './shared/iframe/iframe.component';
     BasketComponent,
     SelectPaymentMethodComponent,
     PageNotFoundComponent,
-    SuccessComponent,
+    BasketSuccessComponent,
     CardSaveSuccessComponent,
     SpinnerComponent,
     OcrIframeComponent,
-    IframeComponent
+    IframeComponent,
+    CardSaveErrorComponent
   ],
   imports: [
     BrowserModule,

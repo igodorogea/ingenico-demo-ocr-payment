@@ -15,13 +15,17 @@ export class CardSaveSuccessComponent implements OnInit {
 
   ngOnInit() {
     this.cscService.getInitPaymentUrl().subscribe(url => {
-      this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      if (url) {
+        this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      } else {
+        this.router.navigate(['/select-payment-method/card-save-error']);
+      }
     });
   }
 
   iframeLoaded(url) {
-      if (url.indexOf('/ingenico/success') !== -1) {
-        this.router.navigate(['/basket/success']);
-      }
+    if (url.indexOf('/ingenico/success') !== -1) {
+      this.router.navigate(['/basket/success']);
+    }
   }
 }
