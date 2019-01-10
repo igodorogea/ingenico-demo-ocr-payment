@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 interface OcrUrl {
   addCreditCardUrl: string;
@@ -16,10 +16,6 @@ interface Card {
   uuid: string;
   validationAmount: number;
   validationStatus: string;
-}
-
-interface CardsAll {
-  items: Card[];
 }
 
 interface IngenicoPaymentUrlPayload {
@@ -72,44 +68,30 @@ export class ApiService {
 
   getAddCreditCardOcrUrl(): Observable<string> {
     return this.http.post<OcrUrl>('/muume/creditCard/ocr?isOcrPayment=1', null)
-      .pipe(map(({addCreditCardUrl}) => addCreditCardUrl));
+      .pipe(handleResponse(({addCreditCardUrl}) => addCreditCardUrl));
   }
 
   getAllUserCards() {
     return this.http.get<{ items: Card[] }>('/muume/creditCard/all')
-      .pipe(map(({items}) => items));
+      .pipe(handleResponse(({items}) => items));
+  }
+
+  getAllUserCarts() {
+    return this.http.get<{ items: any }>('/muume/external-products/carts')
+      .pipe(handleResponse(({items}) => items[0]));
   }
 
   getOrder() {
-    return this.http.post<{ order: Order }>('/muume/external-products/checkout', {
-      'channelId': '5',
-      'channelType': 'RETAIL_STORE',
-      'items': [
-        {
-          'amount': 1000,
-          'currency': 'EUR',
-          'id': '10565',
-          'imageUrl': 'https://demo-ingenico.muume.co/media/product/8/198/600_600_e91aa66e-7f72-48a5-924b-972cfbc3a9f4.jpeg',
-          'options': [
-            {
-              'name': 'Lego',
-              'value': 'City'
-            }
-          ],
-          'pricePerUnit': 10.00,
-          'productType': 'Scannable',
-          'quantity': 1,
-          'sku': 'lego-city',
-          'status': 'AVAILABLE',
-          'title': 'Lego',
-          'type': 'HASH_CODE',
-          'value': '33192191905490113253659725875460',
-          'variationId': '1456'
-        }
-      ],
-      'paymentMethod': 'UNDEFINED'
-    })
-      .pipe(map(({order}) => order));
+    return this.getAllUserCarts()
+      .pipe(switchMap((cart: any) =>
+        this.http.post<{ order: Order }>('/muume/external-products/checkout', {
+          'channelId': cart.channel.id,
+          'channelType': cart.channel.type,
+          'items': cart.items,
+          'paymentMethod': 'UNDEFINED'
+        })
+          .pipe(handleResponse(({order}) => order))
+      ));
   }
 
   getInitPaymentUrl(card: Card, order: Order) {
@@ -120,6 +102,16 @@ export class ApiService {
       muumeOrderId: order.id,
       tokens: [card.uuid]
     })
-      .pipe(map(({data}) => data));
+      .pipe(handleResponse(({data}) => data));
   }
+}
+
+export function handleResponse(cb) {
+  return map((resp: any) => {
+    if (resp.status === 'ERROR') {
+      throw new Error(resp.errorMessage);
+    } else {
+      return cb(resp);
+    }
+  });
 }

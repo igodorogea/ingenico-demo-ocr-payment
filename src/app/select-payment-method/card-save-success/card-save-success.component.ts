@@ -14,13 +14,16 @@ export class CardSaveSuccessComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer, private cscService: CardSaveSuccessService, private router: Router) { }
 
   ngOnInit() {
-    this.cscService.getInitPaymentUrl().subscribe(url => {
-      if (url) {
-        this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      } else {
-        this.router.navigate(['/select-payment-method/card-save-error']);
-      }
-    });
+    this.cscService.getInitPaymentUrl().subscribe(
+      url => {
+        if (url) {
+          this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        } else {
+          this.router.navigate(['/select-payment-method/card-save-error']);
+        }
+      },
+      err => alert(err)
+    );
   }
 
   iframeLoaded(url) {
