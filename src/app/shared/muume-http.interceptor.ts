@@ -11,7 +11,7 @@ export class MuumeHttpInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: {
           'App-Code': 'ingenicoSDK',
-          'Authorization': 'fe162dfb-04ea-41b7-b89f-251aed44bcce',
+          'Authorization': 'fe6478bb-9bc7-4054-8983-94ce7b43f710',
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
