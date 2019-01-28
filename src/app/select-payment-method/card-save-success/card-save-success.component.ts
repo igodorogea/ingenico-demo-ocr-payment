@@ -23,8 +23,8 @@ export class CardSaveSuccessComponent implements OnInit {
         }
       },
       error => {
+        console.log(error);
         this.router.navigate(['/select-payment-method/card-save-error', {error}]);
-        // alert(error)
       }
     );
   }
